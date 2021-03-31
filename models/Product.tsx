@@ -1,5 +1,5 @@
 import {Schema, model, Document} from 'mongoose'
-import {ICategories} from '../models/Category'
+import {ICategories} from './Category'
 import uniqueValidator from 'mongoose-unique-validator'
 
 interface IProducts extends Document{
