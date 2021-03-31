@@ -15,4 +15,4 @@ const CategoriesModel = new Schema({
 
 CategoriesModel.plugin(uniqueValidator)
 
-export default model<ICategories>('Categories',CategoriesModel)
+export default model('Categories',CategoriesModel)

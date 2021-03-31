@@ -1,13 +1,13 @@
 import {Request, Response} from 'express'
 
-import Category from '../models/Category'
+import CategoryService from '../services/category'
 
 class CategoryController {
 
   public async search (req: Request, res: Response): Promise<Response>{
     const searchTerm = req.params.searchTerm
     try{
-      const categories = await Category.find({ name: { '$regex' : searchTerm, '$options' : 'i' } })
+      const categories = await CategoryService.findByName(searchTerm)
       return res.status(200).json(categories)
 
     }catch(e){
@@ -17,7 +17,7 @@ class CategoryController {
 
   public async index (req: Request, res: Response): Promise<Response>{
     try{
-      const categories = await Category.find()
+      const categories = await CategoryService.find()
       return res.status(200).json(categories)
 
     }catch(e){
@@ -27,7 +27,7 @@ class CategoryController {
 
   public async create (req: Request, res: Response): Promise<Response>{
     try{
-      const category = await Category.create(req.body)
+      const category = await CategoryService.save(req.body)
       return res.status(200).json(category)
 
     }catch(e){
@@ -38,8 +38,8 @@ class CategoryController {
   public async update (req: Request, res: Response): Promise<Response>{
     const categoryid = req.params.categoryid
     try{
-      await Category.updateOne({ _id: categoryid },req.body)
-      const category = await Category.findById(categoryid)
+      await CategoryService.updateOne({ _id: categoryid },req.body)
+      const category = await CategoryService.findById(categoryid)
       return res.status(200).json(category)
 
     }catch(e){
@@ -50,8 +50,8 @@ class CategoryController {
   public async desactive (req: Request, res: Response): Promise<Response>{
     const categoryid = req.params.categoryid
     try{
-      await Category.updateOne({ _id: categoryid },{status: false})
-      const category = await Category.findById(categoryid)
+      await CategoryService.updateOne({ _id: categoryid },{status: false})
+      const category = await CategoryService.findById(categoryid)
       return res.status(200).json(category)
 
     }catch(e){
@@ -62,8 +62,8 @@ class CategoryController {
   public async active (req: Request, res: Response): Promise<Response>{
     const categoryid = req.params.categoryid
     try{
-      await Category.updateOne({ _id: categoryid },{status: true})
-      const category = await Category.findById(categoryid)
+      await CategoryService.updateOne({ _id: categoryid },{status: true})
+      const category = await CategoryService.findById(categoryid)
       return res.status(200).json(category)
 
     }catch(e){
@@ -74,7 +74,7 @@ class CategoryController {
   public async findById (req: Request, res: Response): Promise<Response>{
     const categoryid = req.params.categoryid
     try{
-      const product = await Category.findById(categoryid)
+      const product = await CategoryService.findById(categoryid)
       return res.status(200).json(product)
 
     }catch(e){
