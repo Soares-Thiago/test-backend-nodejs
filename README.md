@@ -1,11 +1,10 @@
--The database used was MongoDB, and ORM Mongoose
--express
--typescript
+-The database used was MongoDB, and ORM Mongoose<br>
+-express<br>
+-typescript<br><br>
 
-*instructions* 
+*instructions* <br><br>
 
--First create a database in MongoDB with the name 'anota_ai' for example
--Change the connection string in .env
--Then open the directory in the terminal and run the command 'yarn'
--If you don't have yarn intale with 'npm install --global yarn'
--After that run the command 'yarn dev' on your terminal and the application will be running
+-First create a database in MongoDB with the name 'anota_ai' for example<br>
+-Change the connection string in ./config/config.js<br>
+-Then open the directory in the terminal and run the command 'npm install'<br>
+-After that run the command 'npm run dev' on your terminal and the application will be running<br>
