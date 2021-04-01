@@ -1,6 +1,6 @@
 -The database used was MongoDB, and ORM Mongoose<br>
 -express<br>
--typescript<br><br>
+-Javascript<br><br>
 
 *instructions* <br><br>
 
